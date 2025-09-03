@@ -11,8 +11,8 @@ public class Main {
 
         SavingsAccount savings = new SavingsAccount();
         savings.deposit(100);
-        // Estado inicial: irá lançar UnsupportedOperationException (ilustra o problema LSP).
+        // Após refatoração: não lança exceção, mas também não saca (SavingsAccount não implementa Withdrawable)
         new BankService().processWithdrawal(savings, 30);
-        System.out.println("Savings balance: " + savings.getBalance());
+        System.out.println("Savings balance: " + savings.getBalance()); // Deve permanecer 100.0
     }
 }
